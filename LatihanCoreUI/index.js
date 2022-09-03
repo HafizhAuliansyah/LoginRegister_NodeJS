@@ -43,24 +43,6 @@ app.use("/", router);
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-// passport.use(
-//   new LocalStrategy(function (username, password, done) {
-//     User.findOne({ username: username }, function (err, user) {
-//       if (err) {
-//         return done(err);
-//       }
-//       if (!user) {
-//         return done(null, false, { message: "User doesn't exists" });
-//       }
-//       if (!user.verifyPassword(password)) {
-//         return done(null, false, {
-//           message: "Invalid Password",
-//         });
-//       }
-//       return done(null, user);
-//     });
-//   })
-// );
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
