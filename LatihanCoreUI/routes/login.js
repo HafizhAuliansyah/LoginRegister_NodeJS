@@ -3,8 +3,9 @@ const router = express.Router();
 const passport = require("passport");
 
 router.get("/", (req, res) => {
-  res.render("login", { message: req.session.messages });
-  req.session.message = "";
+  let message = req.session.messages;
+  req.session.messages = [];
+  res.render("login", { message: message });
 });
 router.post(
   "/",
