@@ -8665,7 +8665,7 @@ html:not([dir="rtl"]) .sidebar-close {
   padding: 0;
   margin-bottom: 0;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   list-style: none;
 }
 .sidebar-nav .nav-title {
