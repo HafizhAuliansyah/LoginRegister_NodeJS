@@ -162,6 +162,7 @@
                               {{#if admin}}
                               <th scope="col">Created By</th>
                               {{/if}}
+                              <th scope="col">Tanggal Transaksi</th>
                            </tr>
                         </thead>
                         <tbody>
@@ -173,6 +174,7 @@
                               <td>{{tipe}}</td>
                               <td>{{jumlah}}</td>
                               <td>{{created_by }}</td>
+                              <td>{{tgl_transaksi }}</td>
                               {{/with}}
                            </tr>
                            {{/each}} {{else}} {{#each data_transaksi}}
@@ -182,6 +184,7 @@
                               <td>{{deskripsi}}</td>
                               <td>{{tipe}}</td>
                               <td>{{jumlah}}</td>
+                              <td>{{tgl_transaksi }}</td>
                               {{/with}}
                            </tr>
                            {{/each}} {{/if}}
