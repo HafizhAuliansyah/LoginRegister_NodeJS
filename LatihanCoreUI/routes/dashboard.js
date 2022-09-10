@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
+const { ROLE } = require("../models/role");
+const { routingRole } = require("../middleware/authorize");
 const connectEnsureLogin = require("connect-ensure-login");
+const controller = require("../Controller/UserController");
 router.get("/", connectEnsureLogin.ensureLoggedIn(), (req, res) => {
-  res.render("index", {
-    username: req.user.username,
-    session_age: req.session.cookie.maxAge,
-  });
+  controller.showDashboard(req, res);
 });
 module.exports = router;

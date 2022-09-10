@@ -10,12 +10,12 @@ const User = require("./models/user");
 const router = require("./routes");
 // Use Session
 app.use(
-  session({
-    secret: "r8q,+&1LM3)CD*zAGpx1xm{NeQhc;#",
-    resave: false,
-    saveUninitialized: true,
-    cookie: { maxAge: 60 * 60 * 1000 }, // 1 hour
-  })
+   session({
+      secret: "r8q,+&1LM3)CD*zAGpx1xm{NeQhc;#",
+      resave: false,
+      saveUninitialized: true,
+      cookie: { maxAge: 60 * 60 * 10000 }, // 1 hour
+   })
 );
 // Use middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -28,8 +28,11 @@ const publicDirectoryPath = path.join(__dirname);
 app.use(express.static(publicDirectoryPath));
 app.use(bodyParser.urlencoded({ extended: false }));
 
+hbs.registerHelper("inc", function (value, options) {
+   return parseInt(value) + 1;
+});
 app.set("view engine", "html");
-app.engine("html", require("hbs").__express);
+app.engine("html", hbs.__express);
 
 const viewPath = path.join(__dirname, "views");
 app.set("views", viewPath);
@@ -46,5 +49,5 @@ passport.deserializeUser(User.deserializeUser());
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log("Server is up on port " + port);
+   console.log("Server is up on port " + port);
 });
