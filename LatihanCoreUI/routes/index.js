@@ -4,20 +4,22 @@ const passport = require("passport");
 const loginRoutes = require("./login");
 const registerRoutes = require("./register");
 const dashboardRoutes = require("./dashboard");
+const transaksiRoutes = require("./transaksi");
 
 router.get("/", (req, res) => {
-  res.redirect("/dashboard");
+   res.redirect("/dashboard");
 });
 router.use("/login", loginRoutes);
 router.use("/register", registerRoutes);
 router.use("/dashboard", dashboardRoutes);
+router.use("/transaksi", transaksiRoutes);
 router.get("/logout", function (req, res) {
-  req.logout(function (err) {
-    if (err) {
-      return next(err);
-    }
-  });
-  res.redirect("/login");
+   req.logout(function (err) {
+      if (err) {
+         return next(err);
+      }
+   });
+   res.redirect("/login");
 });
 
 module.exports = router;
